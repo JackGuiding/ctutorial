@@ -1,2 +1,2 @@
 call build.bat
-.\bin\main.exe
+.\bin\main

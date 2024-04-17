@@ -4,6 +4,7 @@
         "*.wxss": "css",
         "*.wxs": "javascript",
         "test.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "raylib.h": "c"
     }
 }
