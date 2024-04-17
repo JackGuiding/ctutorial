@@ -1,32 +1,42 @@
 // Source 源代码
-#include "..\include\raylib.h"
-#include "test.h"  // 自定义库用""
-#include "yo.h"    // 自定义库用""
 #include <stdio.h> // 官方库用<>
 #include <time.h>
-
-const int EXIT_CODE_SUCCESS = 0;
-const int EXIT_CODE_FAILED = -1;
+#include "Entity/export.h"
 
 int main() {
 
     InitWindow(800, 600, "Hello World");
 
+    E_Plane plane;
+    plane.pos = (Vector2){400, 300};
+    plane.radius = 10;
+    plane.color = BLUE;
+    plane.speed = 100;
+
+    E_Input input = {0};
+
     while (!WindowShouldClose()) {
+
+        float dt = GetFrameTime();
+
+        // ==== Process Input ====
+        E_Input_Tick(&input); // ref input
+
+        // ==== Do Logic ====
+        Vector2 moveAxis = Vector2Normalize(input.moveAxis);
+        E_Plane_Move(&plane, moveAxis, dt);
+
+        // ==== Draw ====
         BeginDrawing();
         ClearBackground(RAYWHITE);
         DrawText("Hello World", 10, 10, 20, LIGHTGRAY);
+
+        DrawCircleV(plane.pos, plane.radius, plane.color);
         EndDrawing();
+
     }
 
     CloseWindow();
-
-    int a = 3;
-    int b = 4;
-    int c = Add(a, b);
-    int d = Substract(a, b);
-    printf("%d + %d = %d\r\n", a, b, c);
-    printf("%d - %d = %d\r\n", a, b, d);
 
     return 0;
 

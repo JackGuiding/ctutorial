@@ -5,6 +5,11 @@
         "*.wxs": "javascript",
         "test.h": "c",
         "stdio.h": "c",
-        "raylib.h": "c"
+        "raylib.h": "c",
+        "yo.h": "c",
+        "import.h": "c",
+        "e_plane.h": "c",
+        "export.h": "c",
+        "raymath.h": "c"
     }
 }
